@@ -289,6 +289,7 @@ function setupAnalyticsEvents() {
   document.getElementById('printCv')?.addEventListener('click', () => track('print_cv'));
   document.getElementById('linkedinLink')?.addEventListener('click', () => track('click_social', { platform: 'linkedin' }));
   document.getElementById('githubLink')?.addEventListener('click', () => track('click_social', { platform: 'github' }));
+  document.getElementById('instagramLink')?.addEventListener('click', () => track('click_social', { platform: 'instagram' }));
   document.getElementById('emailLink')?.addEventListener('click', () => track('click_email'));
 
   document.querySelectorAll('.lang-btn').forEach((btn) => {

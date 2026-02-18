@@ -255,6 +255,38 @@ input, textarea {
 }
 body.light .email-link { color: #004f9e; }
 
+.social-contact-links {
+  display: grid;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.social-contact-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.social-contact-links a:hover,
+.social-contact-links a:focus-visible {
+  color: var(--accent);
+}
+
+.social-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.7rem;
+  height: 1.7rem;
+  border-radius: 999px;
+  border: 2px solid var(--border);
+  font-size: 0.7rem;
+  font-weight: 800;
+}
+
 .form-feedback { min-height: 1.2rem; color: var(--accent); font-weight: 600; }
 
 .site-footer {
