@@ -1,6 +1,6 @@
 const translations = {
   en: {
-    nav: { about: 'About', skills: 'Skills', timeline: 'Education', portfolio: 'Portfolio', contact: 'Contact' },
+    nav: { about: 'About', skills: 'Skills', timeline: 'Education', portfolio: 'Portfolio', editing: 'Editing', contact: 'Contact' },
     hero: {
       positioning: 'Junior Developer with creative and AI-oriented skills.',
       subtitle:
@@ -60,7 +60,12 @@ const translations = {
         'Created a production workflow concept integrating copy, graphics, and short video editing using DaVinci Resolve and Adobe tools.',
       inProgressTitle: 'Projects in Development',
       inProgressDesc:
-        'Dependency Monitoring App: concept and implementation of a lightweight app to track package dependencies, detect outdated modules, and improve project maintenance visibility.'
+        'Dependency Monitoring App: concept and implementation of a lightweight app to track package dependencies, detect outdated modules, and improve project maintenance visibility.',
+      featuredTitle: 'Featured Projects (Building Block)',
+      featuredIntro: 'This section is ready to grow with concrete projects and measurable outcomes.',
+      featuredOne: 'Project 01 template: Problem → Solution → Stack → Result → Repo/Live link.',
+      featuredTwo: 'Project 02 template: production workflow + before/after impact.',
+      featuredThree: 'Project 03 template: game/web prototype with short demo and learnings.'
     },
     cv: {
       title: 'Download CV',
@@ -82,7 +87,7 @@ const translations = {
     footer: { language: 'Language: English' }
   },
   it: {
-    nav: { about: 'Chi sono', skills: 'Competenze', timeline: 'Formazione', portfolio: 'Portfolio', contact: 'Contatti' },
+    nav: { about: 'Chi sono', skills: 'Competenze', timeline: 'Formazione', portfolio: 'Portfolio', editing: 'Editing', contact: 'Contatti' },
     hero: {
       positioning: 'Junior Developer con competenze creative e AI-oriented.',
       subtitle:
@@ -142,7 +147,12 @@ const translations = {
         'Creazione di un concept di produzione che integra copy, grafica ed editing video breve usando DaVinci Resolve e strumenti Adobe.',
       inProgressTitle: 'Progetti in sviluppo',
       inProgressDesc:
-        'App di monitoraggio delle dipendenze: progettazione e sviluppo di una app leggera per tracciare dipendenze, individuare moduli obsoleti e migliorare la visibilità sulla manutenzione.'
+        'App di monitoraggio delle dipendenze: progettazione e sviluppo di una app leggera per tracciare dipendenze, individuare moduli obsoleti e migliorare la visibilità sulla manutenzione.',
+      featuredTitle: 'Featured Projects (base pronta)',
+      featuredIntro: 'Questa sezione è pronta per crescere con progetti concreti e risultati misurabili.',
+      featuredOne: 'Template progetto 01: Problema → Soluzione → Stack → Risultato → Link repo/live.',
+      featuredTwo: 'Template progetto 02: workflow produzione + impatto prima/dopo.',
+      featuredThree: 'Template progetto 03: prototipo game/web con demo breve e learnings.'
     },
     cv: {
       title: 'Download CV',
@@ -327,8 +337,9 @@ function init() {
   setupContactForm();
   setupAnalyticsEvents();
 
-  document.getElementById('printCv').addEventListener('click', () => window.print());
-  document.getElementById('year').textContent = new Date().getFullYear();
+  document.getElementById('printCv')?.addEventListener('click', () => window.print());
+  const yearEl = document.getElementById('year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
 }
 
 document.addEventListener('DOMContentLoaded', init);
