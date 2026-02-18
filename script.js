@@ -5,6 +5,7 @@ const translations = {
       positioning: 'Junior Developer with creative and AI-oriented skills.',
       subtitle:
         'I build practical digital experiences by combining development fundamentals, visual communication, and strategic content thinking.',
+      ctaProjects: 'View Projects',
       ctaCv: 'Download CV',
       ctaContact: 'Contact'
     },
@@ -14,7 +15,15 @@ const translations = {
         'I am Aronne Zanichelli, an IT graduate currently studying as an IFTS graphic technician and AI-based social media manager. I combine coding logic with creative execution to produce projects that are clear, useful, and visually effective. I am motivated to grow in junior technical roles where I can ship real products and improve fast.',
       goalTitle: 'Professional Goal',
       goalText:
-        'Entering the world of video games and creating interactive worlds based on personal rules, with a vision that includes virtual reality technologies. I am looking for junior roles in development (game dev / web dev) where I can combine programming and digital creativity.'
+        'Entering the world of video games and creating interactive worlds based on personal rules, with a vision that includes virtual reality technologies. I am looking for junior roles in development (game dev / web dev) where I can combine programming and digital creativity.',
+      valueTitle: 'What I bring to a team',
+      valueOne: 'Technical + creative mindset: code with attention to communication and UX.',
+      valueTwo: 'Reliable execution: I can take a task from brief to final delivery.',
+      valueThree: 'Fast learner with strong motivation for junior growth paths.'
+    },
+    availability: {
+      title: 'Availability',
+      text: 'Based in Italy (Europe/Rome timezone). Open to junior opportunities, internships, and collaborative projects in web development or game development, with remote or hybrid setup.'
     },
     skills: {
       title: 'Technical Skills',
@@ -78,6 +87,7 @@ const translations = {
       positioning: 'Junior Developer con competenze creative e AI-oriented.',
       subtitle:
         'Realizzo esperienze digitali pratiche unendo basi di sviluppo, comunicazione visiva e pensiero strategico sui contenuti.',
+      ctaProjects: 'Vedi progetti',
       ctaCv: 'Scarica CV',
       ctaContact: 'Contattami'
     },
@@ -87,7 +97,15 @@ const translations = {
         'Sono Aronne Zanichelli, perito informatico e attualmente in formazione come tecnico grafico IFTS e social media manager AI-based. Unisco logica di programmazione e creatività per sviluppare progetti chiari, utili e curati dal punto di vista visivo. Voglio crescere in ruoli tecnici junior dove poter consegnare prodotti reali e migliorare rapidamente.',
       goalTitle: 'Obiettivo professionale',
       goalText:
-        'Entrare nel mondo dei videogiochi e creare mondi interattivi basati su regole personali, con una visione che includa tecnologie di realtà virtuale. Cerco ruoli junior nello sviluppo (game dev / web dev) dove unire programmazione e creatività digitale.'
+        'Entrare nel mondo dei videogiochi e creare mondi interattivi basati su regole personali, con una visione che includa tecnologie di realtà virtuale. Cerco ruoli junior nello sviluppo (game dev / web dev) dove unire programmazione e creatività digitale.',
+      valueTitle: 'Cosa porto in un team',
+      valueOne: 'Mentalità tecnica + creativa: codice con attenzione a comunicazione e UX.',
+      valueTwo: 'Esecuzione affidabile: porto un task dal brief alla consegna finale.',
+      valueThree: 'Apprendimento rapido e forte motivazione in percorsi junior.'
+    },
+    availability: {
+      title: 'Disponibilità',
+      text: 'Base in Italia (fuso Europe/Rome). Disponibile per opportunità junior, stage e collaborazioni in web development o game development, in remoto o ibrido.'
     },
     skills: {
       title: 'Competenze tecniche',
@@ -236,6 +254,10 @@ function setupAnalyticsEvents() {
     }
   };
 
+  document.getElementById('viewProjectsCta')?.addEventListener('click', () => {
+    track('click_cta', { cta: 'view_projects' });
+  });
+
   document.getElementById('downloadCvEn')?.addEventListener('click', () => {
     track('download_cv', { language: 'en' });
   });
@@ -255,6 +277,37 @@ function setupAnalyticsEvents() {
   document.getElementById('githubLink')?.addEventListener('click', () => {
     track('click_social', { platform: 'github' });
   });
+
+  document.getElementById('emailLink')?.addEventListener('click', () => {
+    track('click_email');
+  });
+
+  document.querySelectorAll('.lang-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      track('switch_language', { language: btn.dataset.lang });
+    });
+  });
+
+  let scroll50Tracked = false;
+  let scroll90Tracked = false;
+  window.addEventListener('scroll', () => {
+    const pageHeight = document.documentElement.scrollHeight - window.innerHeight;
+    if (pageHeight <= 0) return;
+    const progress = (window.scrollY / pageHeight) * 100;
+
+    if (!scroll50Tracked && progress >= 50) {
+      scroll50Tracked = true;
+      track('scroll_depth', { percent: 50 });
+    }
+
+    if (!scroll90Tracked && progress >= 90) {
+      scroll90Tracked = true;
+      track('scroll_depth', { percent: 90 });
+    }
+  });
+
+  setTimeout(() => track('engaged_time', { seconds: 30 }), 30000);
+  setTimeout(() => track('engaged_time', { seconds: 90 }), 90000);
 
   document.getElementById('contactForm')?.addEventListener('submit', () => {
     track('submit_contact_form_attempt');

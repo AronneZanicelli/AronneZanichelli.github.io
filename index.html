@@ -67,7 +67,8 @@
           <p class="title">Perito informatico • IFTS tecnico grafico • Social Media Manager AI-based</p>
           <p data-i18n="hero.subtitle"></p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#cv" data-i18n="hero.ctaCv"></a>
+            <a id="viewProjectsCta" class="btn btn-primary" href="#portfolio" data-i18n="hero.ctaProjects"></a>
+            <a class="btn btn-secondary" href="#cv" data-i18n="hero.ctaCv"></a>
             <a class="btn btn-secondary" href="#contact" data-i18n="hero.ctaContact"></a>
           </div>
         </div>
@@ -81,6 +82,19 @@
           <h3 data-i18n="about.goalTitle"></h3>
           <p data-i18n="about.goalText"></p>
         </article>
+        <article class="goal-block">
+          <h3 data-i18n="about.valueTitle"></h3>
+          <ul>
+            <li data-i18n="about.valueOne"></li>
+            <li data-i18n="about.valueTwo"></li>
+            <li data-i18n="about.valueThree"></li>
+          </ul>
+        </article>
+      </section>
+
+      <section id="availability" class="container card fade-in">
+        <h2 data-i18n="availability.title"></h2>
+        <p data-i18n="availability.text"></p>
       </section>
 
       <section id="skills" class="container fade-in">
@@ -178,7 +192,7 @@
         <h2 data-i18n="contact.title"></h2>
         <p>
           <strong>Email:</strong>
-          <a href="mailto:aronnezanichelli@gmail.com">aronnezanichelli@gmail.com</a>
+          <a id="emailLink" href="mailto:aronnezanichelli@gmail.com">aronnezanichelli@gmail.com</a>
         </p>
         <form id="contactForm" action="https://formspree.io/f/mrealagr" method="POST" novalidate>
           <input type="hidden" name="_subject" value="[SITO CV] Nuovo messaggio dal portfolio" />
