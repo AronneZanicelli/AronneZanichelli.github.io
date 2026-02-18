@@ -12,18 +12,18 @@ const translations = {
     about: {
       title: 'About Me',
       bio:
-        'I am Aronne Zanichelli, an IT graduate currently studying as an IFTS graphic technician and AI-based social media manager. I combine coding logic with creative execution to produce projects that are clear, useful, and visually effective. I am motivated to grow in junior technical roles where I can ship real products and improve fast.',
+        'I am Aronne Zanichelli, an IT graduate in Computer Science and Telecommunications. I grew up with technology and I enjoy turning digital passion into real, useful work. My profile blends development fundamentals with visual communication and social content execution.',
       goalTitle: 'Professional Goal',
       goalText:
-        'Entering the world of video games and creating interactive worlds based on personal rules, with a vision that includes virtual reality technologies. I am looking for junior roles in development (game dev / web dev) where I can combine programming and digital creativity.',
+        'I want to enter the world of video games and interactive technologies, including VR-oriented experiences. I am looking for junior opportunities in web/game development where I can combine programming, creativity, and fast learning.',
       valueTitle: 'What I bring to a team',
       valueOne: 'Technical + creative mindset: code with attention to communication and UX.',
-      valueTwo: 'Reliable execution: I can take a task from brief to final delivery.',
-      valueThree: 'Fast learner with strong motivation for junior growth paths.'
+      valueTwo: 'Operational autonomy in execution and delivery.',
+      valueThree: 'Problem-solving attitude and strong motivation for junior growth paths.'
     },
     availability: {
       title: 'Availability',
-      text: 'Based in Italy (Europe/Rome timezone). Open to junior opportunities, internships, and collaborative projects in web development or game development, with remote or hybrid setup.'
+      text: 'Based in Italy (Europe/Rome timezone). Open to junior opportunities, internships, and collaborative projects in web development or game development, with remote or hybrid setup. Driving license B and own vehicle.'
     },
     skills: {
       title: 'Technical Skills',
@@ -41,14 +41,24 @@ const translations = {
       three: 'Teamwork and communication',
       four: 'Creative discipline and reliability'
     },
+    languages: {
+      title: 'Languages',
+      it: 'Italian — Native',
+      en: 'English — Intermediate (B2)',
+      es: 'Spanish — Basic (A1)'
+    },
     timeline: {
       title: 'Education & Experience',
-      diplomaTitle: 'Diploma - IT Technician',
-      diplomaDesc: 'Completed secondary technical education with a focus on computer science.',
-      iftsTitle: 'Current - IFTS Graphic Technician & AI-based Social Media Manager',
-      iftsDesc: 'Training path combining visual design, media strategy, and AI-oriented digital workflows.',
-      templateTitle: 'Future Role / Project (Template)',
-      templateDesc: 'Add your next internship, freelance experience, or shipped project here.'
+      educationTitle: 'IT Diploma (2019-2025) - Istituto Superiore Statale S. D\'Arzo',
+      educationDesc: 'Technical diploma in computer science and telecommunications.',
+      conadTitle: 'Cashier / Warehouse Assistant - Conad (May 2021 - Sep 2021)',
+      conadDesc: 'Managed cashier operations, shelf restocking, and warehouse organization with operational autonomy.',
+      sinegoTitle: 'Public Relations Assistant - Sinego Srl (Sep 2021 - Aug 2022)',
+      sinegoDesc: 'Front-facing communication support and relationship management in customer-facing activities.',
+      optimaTitle: 'Commercial Consultant - Optima Spa (May 2024 - Jul 2025)',
+      optimaDesc: 'Consulting for telecom services targeted to both private clients and businesses.',
+      currentTitle: 'Current - IFTS Graphic Technician & AI-based Social Media Manager',
+      currentDesc: 'Training path combining visual design, media strategy, and AI-oriented digital workflows.'
     },
     portfolio: {
       title: 'Portfolio',
@@ -99,18 +109,18 @@ const translations = {
     about: {
       title: 'Chi sono',
       bio:
-        'Sono Aronne Zanichelli, perito informatico e attualmente in formazione come tecnico grafico IFTS e social media manager AI-based. Unisco logica di programmazione e creatività per sviluppare progetti chiari, utili e curati dal punto di vista visivo. Voglio crescere in ruoli tecnici junior dove poter consegnare prodotti reali e migliorare rapidamente.',
+        'Sono Aronne Zanichelli, diplomato in Informatica e Telecomunicazioni. Sono cresciuto con la tecnologia e mi piace trasformare la passione digitale in lavoro reale e utile. Il mio profilo unisce basi di sviluppo, comunicazione visiva e produzione contenuti social.',
       goalTitle: 'Obiettivo professionale',
       goalText:
-        'Entrare nel mondo dei videogiochi e creare mondi interattivi basati su regole personali, con una visione che includa tecnologie di realtà virtuale. Cerco ruoli junior nello sviluppo (game dev / web dev) dove unire programmazione e creatività digitale.',
+        'Voglio entrare nel mondo dei videogiochi e delle tecnologie interattive, con una visione che include anche la realtà virtuale. Cerco opportunità junior in web/game development dove unire programmazione, creatività e crescita rapida.',
       valueTitle: 'Cosa porto in un team',
       valueOne: 'Mentalità tecnica + creativa: codice con attenzione a comunicazione e UX.',
-      valueTwo: 'Esecuzione affidabile: porto un task dal brief alla consegna finale.',
-      valueThree: 'Apprendimento rapido e forte motivazione in percorsi junior.'
+      valueTwo: 'Autonomia operativa nell\'esecuzione e nella consegna.',
+      valueThree: 'Approccio al problem solving e forte motivazione in percorsi junior.'
     },
     availability: {
       title: 'Disponibilità',
-      text: 'Base in Italia (fuso Europe/Rome). Disponibile per opportunità junior, stage e collaborazioni in web development o game development, in remoto o ibrido.'
+      text: 'Base in Italia (fuso Europe/Rome). Disponibile per opportunità junior, stage e collaborazioni in web development o game development, in remoto o ibrido. Patente B e automunito.'
     },
     skills: {
       title: 'Competenze tecniche',
@@ -128,14 +138,24 @@ const translations = {
       three: 'Teamwork e comunicazione',
       four: 'Disciplina creativa e affidabilità'
     },
+    languages: {
+      title: 'Lingue',
+      it: 'Italiano — Madrelingua',
+      en: 'Inglese — Intermedio (B2)',
+      es: 'Spagnolo — Base (A1)'
+    },
     timeline: {
       title: 'Formazione ed esperienza',
-      diplomaTitle: 'Diploma - Perito Informatico',
-      diplomaDesc: 'Percorso tecnico secondario completato con focus informatico.',
-      iftsTitle: 'Attualmente - IFTS Tecnico Grafico & Social Media Manager AI-based',
-      iftsDesc: 'Percorso che integra design visivo, strategia media e workflow digitali orientati all\'AI.',
-      templateTitle: 'Ruolo / Progetto futuro (Template)',
-      templateDesc: 'Aggiungi qui il prossimo stage, lavoro freelance o progetto pubblicato.'
+      educationTitle: 'Diploma IT (2019-2025) - Istituto Superiore Statale S. D\'Arzo',
+      educationDesc: 'Diploma tecnico in Informatica e Telecomunicazioni.',
+      conadTitle: 'Cassiere / Magazziniere - Conad (Mag 2021 - Set 2021)',
+      conadDesc: 'Gestione cassa, rifornimento scaffali e organizzazione magazzino in autonomia.',
+      sinegoTitle: 'Addetto alle Pubbliche Relazioni - Sinego Srl (Set 2021 - Ago 2022)',
+      sinegoDesc: 'Supporto nella comunicazione front-facing e gestione relazionale con il pubblico.',
+      optimaTitle: 'Consulente Commerciale - Optima Spa (Mag 2024 - Lug 2025)',
+      optimaDesc: 'Consulenza su servizi di telecomunicazione rivolta ad aziende e privati.',
+      currentTitle: 'Attualmente - IFTS Tecnico Grafico & Social Media Manager AI-based',
+      currentDesc: 'Percorso che integra design visivo, strategia media e workflow digitali orientati all\'AI.'
     },
     portfolio: {
       title: 'Portfolio',
