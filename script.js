@@ -315,3 +315,32 @@ function init() {
 }
 
 document.addEventListener('DOMContentLoaded', init);
+
+
+// ===== CV LANGUAGE SYNC =====
+function updateCvHeader(lang) {
+  const headerLink = document.getElementById("headerDownloadCv");
+  if (!headerLink) return;
+  headerLink.href = `assets/cv-${lang}.pdf`;
+  headerLink.textContent = lang === "it" ? "Scarica CV" : "Download CV";
+}
+
+function updateCvSection(lang) {
+  const img = document.getElementById("cv-img");
+  const bottomDownload = document.getElementById("cvDownloadBottom");
+  if (!img || !bottomDownload) return;
+  img.src = `assets/cv-${lang}.png`;
+  bottomDownload.href = `assets/cv-${lang}.pdf`;
+  bottomDownload.textContent = lang === "it" ? "Scarica CV" : "Download CV";
+}
+
+// Language buttons in CV section
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".cv-lang").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const lang = btn.dataset.lang;
+      updateCvHeader(lang);
+      updateCvSection(lang);
+    });
+  });
+});

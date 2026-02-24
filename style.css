@@ -361,3 +361,41 @@ a:focus-visible {
   .skill-card,
   .timeline-node { box-shadow: none; border: 1px solid #777; }
 }
+
+
+/* ===== SEPARATORS ===== */
+.sep {
+  height: 1px;
+  background: #e6e6e6;
+  margin: 32px 0;
+  border-radius: 2px;
+}
+.sep.small {
+  margin: 14px auto;
+  width: 70%;
+}
+
+/* ===== CV PREVIEW ===== */
+.cv-preview-wrapper img {
+  max-width: 100%;
+  border-radius: 6px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+.cv-actions {
+  margin-top: 14px;
+}
+
+.cv-lang {
+  margin-right: 8px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background: transparent;
+  cursor: pointer;
+}
+
+.social-name {
+  margin-left: 6px;
+  font-weight: 500;
+}

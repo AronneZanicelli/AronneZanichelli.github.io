@@ -183,15 +183,7 @@
           </div>
         </section>
 
-        <section id="cv" class="card fade-in">
-          <h2 data-i18n="cv.title"></h2>
-          <p data-i18n="cv.description"></p>
-          <div class="hero-actions">
-            <a id="downloadCvEn" class="btn btn-primary" href="assets/cv_en.pdf" download data-i18n="cv.downloadEn"></a>
-            <a id="downloadCvIt" class="btn btn-secondary" href="assets/cv_it.pdf" download data-i18n="cv.downloadIt"></a>
-            <button class="btn btn-secondary" id="printCv" data-i18n="cv.print"></button>
-          </div>
-        </section>
+        
 
         <section id="contact" class="card fade-in">
           <h2 data-i18n="contact.title"></h2>
@@ -232,7 +224,26 @@
           </form>
         </section>
       </div>
-    </main>
+    
+<section id="cv">
+  <h2>Curriculum Vitae</h2>
+  <p>Visualizza un'anteprima del mio curriculum e scaricalo nella lingua che preferisci.</p>
+
+  <div class="cv-preview-wrapper">
+    <img id="cv-img" src="assets/cv-it.png" alt="Anteprima CV">
+  </div>
+
+  <div class="cv-actions">
+    <button class="cv-lang" data-lang="it">IT</button>
+    <button class="cv-lang" data-lang="en">EN</button>
+  </div>
+
+  <a id="cvDownloadBottom" id="headerDownloadCv" href="assets/cv-it.pdf" download class="btn btn-secondary">
+    Scarica CV
+  </a>
+</section>
+
+</main>
 
     <footer class="site-footer">
       <div class="container footer-content">
