@@ -78,3 +78,45 @@ Two methods are already supported:
 - Replace `assets/profile.jpg` with optimized image (`.webp` recommended under 250 KB).
 - Keep PDFs lightweight (< 1 MB each).
 - Use compressed media for portfolio screenshots/videos.
+
+## EU4 Assistant + Bot design
+
+- Initial design document: `EU4_ASSISTANT_BOT_DESIGN.md`.
+
+
+## EU4 Assistant + Bot bootstrap (M1)
+
+A minimal Python foundation now exists under `eu4_assistant_bot/` with:
+- mode presets (`assist`, `semi-bot`, `full-bot`),
+- logging + event telemetry,
+- snapshot serialization,
+- parser PoC for `common/units`, `common/ideas`, `common/event_modifiers`.
+
+Run bootstrap:
+
+```bash
+python -m eu4_assistant_bot.main --mode assist --install-path /path/to/eu4
+```
+
+Run tests:
+
+```bash
+python -m pytest -q
+```
+
+
+## EU4 Assistant + Bot decision layer (M2 in progress)
+
+Implemented now:
+- `DecisionEngine` with explainable top-3 recommendations.
+- Configurable risk thresholds from `AppConfig.decision`.
+- Risk profiles (`safe`, `balanced`, `aggressive`) to quickly tune decision thresholds.
+- Structured risk reason codes (`coalition.high`, `debt.over_ratio`, `debt.negative_balance`, `manpower.low`, `rebels.high`).
+- Action plans strutturati (`ActionPlan`) derivati dalle raccomandazioni per preparare il layer bot operativo.
+- Simulated executor pipeline che processa i piani (`skipped` in assist se serve conferma, `simulated_executed` in modalità bot).
+- `SnapshotReader` for normalized JSON game snapshots, now usable directly via CLI adapter (`--snapshot-json`) with fallback on invalid payloads.
+- Save extract adapter (`--snapshot-save`) for lightweight local save ingestion.
+
+Current milestone status:
+- M1 ✅ bootstrap/package/parser/telemetry
+- M2 🟡 in progress (decision + alert engine with configurable thresholds and reason codes)

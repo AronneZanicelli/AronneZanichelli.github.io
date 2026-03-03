@@ -1,0 +1,4 @@
+__pycache__/
+*.pyc
+.eu4-assistant/
+.pytest_cache/
