@@ -28,6 +28,20 @@ def test_read_json_snapshot(tmp_path: Path) -> None:
     assert out.colonial.colonists_free == 1
 
 
+def test_read_json_snapshot_tolerates_null_sections(tmp_path: Path) -> None:
+    """Regression test for P1 bug: null or non-mapping nested sections must not raise TypeError."""
+    sample = tmp_path / "snapshot-nulls.json"
+    sample.write_text(
+        '{"timestamp": "2026-01-01T00:00:00+00:00", "country": "POR", "economy": null, "military": []}'
+    )
+
+    out = SnapshotReader().read_json_snapshot(sample)
+
+    assert out.country == "POR"
+    assert out.economy.treasury == 0.0
+    assert out.military.manpower == 0
+
+
 def test_read_json_snapshot_raises_on_missing_timestamp(tmp_path: Path) -> None:
     sample = tmp_path / "snapshot-invalid.json"
     sample.write_text('{"country": "POR"}')

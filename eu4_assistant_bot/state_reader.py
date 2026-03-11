@@ -36,12 +36,17 @@ class SnapshotReader:
         if "timestamp" not in payload:
             raise SnapshotReadError("Invalid snapshot payload: missing required field 'timestamp'.")
 
+        def _safe_dict(key: str) -> dict:
+            """Return the nested mapping for *key*, or {} if it is missing/null/non-mapping."""
+            value = payload.get(key)
+            return value if isinstance(value, dict) else {}
+
         return GameSnapshot(
             timestamp=payload["timestamp"],
             country=payload.get("country", "UNK"),
-            economy=EconomyState(**payload.get("economy", {})),
-            military=MilitaryState(**payload.get("military", {})),
-            diplomacy=DiplomacyState(**payload.get("diplomacy", {})),
-            colonial=ColonialState(**payload.get("colonial", {})),
-            risk=RiskState(**payload.get("risk", {})),
+            economy=EconomyState(**_safe_dict("economy")),
+            military=MilitaryState(**_safe_dict("military")),
+            diplomacy=DiplomacyState(**_safe_dict("diplomacy")),
+            colonial=ColonialState(**_safe_dict("colonial")),
+            risk=RiskState(**_safe_dict("risk")),
         )
