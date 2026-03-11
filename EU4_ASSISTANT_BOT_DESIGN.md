@@ -10,7 +10,9 @@ Realizzare un'**applicazione desktop Windows** che si affianca a Europa Universa
 | **Semi-bot** | Propone azioni specifiche che il giocatore conferma prima dell'esecuzione. |
 | **Full-bot** | Esegue autonomamente task configurati entro guardrail di sicurezza. |
 
-Supporto completo a campagne **vanilla**, **DLC** e **mod attive**, in modalità **normale** e **Ironman**.
+Supporto completo a campagne **vanilla**, **tutti i DLC** e **mod attive**, in modalità **normale**.
+
+> **Scope v1.0:** Ironman è escluso. L'obiettivo primario è un'applicazione stabile dall'inizio alla fine di una campagna normale, senza crash o comportamenti inattesi, su qualsiasi combinazione di DLC attivi.
 
 ---
 
@@ -37,11 +39,19 @@ I save file EU4 sono in formato **Clausewitz** in due varianti:
 | Tipo | Formato interno |
 |---|---|
 | Campagna normale | ZIP contenente testo Clausewitz |
-| Ironman | ZIP contenente binario Clausewitz |
 
-**Parser:** implementazione custom Python con supporto progressivo:
-- M3: testo Clausewitz completo (campagne normali)
-- M4: decodifica binaria Ironman (via lookup table + struttura nota)
+**Parser:** implementazione custom Python per testo Clausewitz completo (M3).
+Ironman (binary Clausewitz) è fuori scope per v1.0.
+
+
+### 2.3 Compatibilità DLC
+
+I DLC di EU4 aggiungono meccaniche (es. Dharma, Emperor, Leviathan) che modificano la struttura del save file. La strategia di compatibilità è:
+
+- **Parsing difensivo:** ogni campo estratto da `StateExtractor` ha un valore di default safe se assente.
+- **Nessuna assunzione su sezioni opzionali:** le sezioni introdotte da DLC specifici (es. `estates`, `parliaments`, `fervor`) vengono estratte se presenti, ignorate se assenti.
+- **Test su sample save:** la suite di test include save campione generati con diverse combinazioni DLC attivi.
+- **Graceful degradation:** se una sezione DLC non è parsata, l'advisor mostra i dati disponibili senza crashare.
 
 ### 2.3 UI: overlay separato (PyQt6)
 
@@ -102,13 +112,11 @@ Azioni via simulazione input mouse/tastiera (`pyautogui` + `win32api`). Ogni azi
 - Debounce 500ms (il file viene scritto in più chunk).
 - Thread separato, comunica via queue thread-safe con il core.
 
-### 4.2 `eu4_assistant_bot.parser` *(esteso — M3, M4)*
+### 4.2 `eu4_assistant_bot.parser` *(esteso — M3)*
 - **M3** — `ClausewitzTextParser`: parser ricorsivo completo per save testuali.
   - Gestisce: blocchi annidati `key = { ... }`, liste, stringhe quotate, date `YYYY.MM.DD`.
   - Output: albero dizionario Python nativo.
-- **M4** — `ClausewitzBinaryDecoder`: decodifica save Ironman.
-  - Legge header binario, risolve token → chiave via lookup table, ricostruisce albero.
-- **`SaveUnzipper`**: decompressione ZIP pre-parsing per entrambi i formati.
+- **`SaveUnzipper`**: decompressione ZIP pre-parsing.
 
 ### 4.3 `eu4_assistant_bot.extractor` *(nuovo — M5)*
 - `StateExtractor`: mappa albero Clausewitz grezzo → `GameSnapshot` tipizzato.
@@ -275,13 +283,13 @@ eu4_assistant_autosave/
 | **M1** ✅ | Foundation: config, models, telemetry, parser PoC, CLI | — |
 | **M2** ✅ | Decision engine + risk alerts + simulated executor | M1 |
 | **M3** | ClausewitzTextParser completo + SaveUnzipper + mod autosave | M1 |
-| **M4** | Ironman binary decoder | M3 |
-| **M5** | FileWatcher + StateExtractor + GameSnapshot v2 | M3 |
-| **M6** | UI PyQt6 (Dashboard + Advisor, dati live) | M5 |
-| **M7** | Military logic reale (stack scoring, army advisor) | M5, M6 |
-| **M8** | Colonial + Economy logic reale | M5, M6 |
-| **M9** | ActionExecutor reale (pyautogui) + semi-bot confirm | M6, M7 |
-| **M10** | Packaging PyInstaller + setup wizard + docs | tutti |
+| **M4** | FileWatcher + StateExtractor + GameSnapshot v2 + DLC compat | M3 |
+| **M5** | UI PyQt6 (Dashboard + Advisor, dati live) | M4 |
+| **M6** | Military logic reale (stack scoring, army advisor) | M4, M5 |
+| **M7** | Colonial + Economy logic reale | M4, M5 |
+| **M8** | ActionExecutor reale (pyautogui) + semi-bot confirm | M5, M6 |
+| **M9** | QA: test end-to-end, stabilità, crash hardening | tutti |
+| **M10** | Packaging PyInstaller + setup wizard + docs | M9 |
 | **v1.0** | Release stabile | M10 |
 
 ---
@@ -291,7 +299,6 @@ eu4_assistant_autosave/
 | Rischio | Probabilità | Mitigazione |
 |---|---|---|
 | Patch EU4 cambia formato save | Alta | Layer adapter versionato, test su sample save reali |
-| Ironman binary format incompleto | Media | Riferimento a parser open source esistenti (rakaly/eu4save) |
 | Mod non compatibile con patch EU4 | Bassa | `supported_version` aggiornabile, fallback a autosave standard |
 | pyautogui perde posizione UI dopo patch | Alta | Template matching con confidence threshold, fallback + log |
 | Parsing lento su save >30MB | Media | Parsing selettivo per sezioni (lazy extraction) |
@@ -301,7 +308,7 @@ eu4_assistant_autosave/
 
 ## 9. Definizione di "Done" per v1.0
 
-- [ ] Save file parsato correttamente (normale + Ironman)
+- [ ] Save file parsato correttamente (campagna normale, tutti i DLC)
 - [ ] Mod autosave mensile inclusa e documentata
 - [ ] File watcher live con aggiornamento ~mensile
 - [ ] UI overlay funzionante con dati reali
@@ -322,11 +329,11 @@ eu4_assistant_autosave/
 |---|---|
 | M1 — Foundation | ✅ Completato |
 | M2 — Decision engine + simulated executor | ✅ Completato |
-| M3 — Parser Clausewitz completo + mod | ⏳ Prossimo |
-| M4 — Ironman decoder | 🔜 Pianificato |
-| M5 — FileWatcher + StateExtractor | 🔜 Pianificato |
-| M6 — UI PyQt6 | 🔜 Pianificato |
-| M7 — Military logic | 🔜 Pianificato |
-| M8 — Colonial + Economy logic | 🔜 Pianificato |
-| M9 — ActionExecutor reale | 🔜 Pianificato |
+| M3 — Parser Clausewitz completo + mod autosave | ⏳ Prossimo |
+| M4 — FileWatcher + StateExtractor + DLC compat | 🔜 Pianificato |
+| M5 — UI PyQt6 | 🔜 Pianificato |
+| M6 — Military logic | 🔜 Pianificato |
+| M7 — Colonial + Economy logic | 🔜 Pianificato |
+| M8 — ActionExecutor reale (semi-bot) | 🔜 Pianificato |
+| M9 — QA / stabilità / crash hardening | 🔜 Pianificato |
 | M10 — Packaging | 🔜 Pianificato |
