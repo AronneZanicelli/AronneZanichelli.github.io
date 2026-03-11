@@ -84,39 +84,25 @@ Two methods are already supported:
 - Initial design document: `EU4_ASSISTANT_BOT_DESIGN.md`.
 
 
-## EU4 Assistant + Bot bootstrap (M1)
+## EU4 Assistant + Bot — stato progetto
 
-A minimal Python foundation now exists under `eu4_assistant_bot/` with:
-- mode presets (`assist`, `semi-bot`, `full-bot`),
-- logging + event telemetry,
-- snapshot serialization,
-- parser PoC for `common/units`, `common/ideas`, `common/event_modifiers`.
+Vedi `EU4_ASSISTANT_BOT_DESIGN.md` per la progettazione completa v1.0.
 
-Run bootstrap:
-
-```bash
-python -m eu4_assistant_bot.main --mode assist --install-path /path/to/eu4
-```
+| Milestone | Stato |
+|---|---|
+| M1 — Foundation (config, models, telemetry, parser PoC, CLI) | ✅ Completato |
+| M2 — Decision engine + risk alerts + simulated executor | ✅ Completato |
+| M3 — ClausewitzTextParser completo + SaveUnzipper + mod autosave | ⏳ In corso |
+| M4 — FileWatcher + StateExtractor + GameSnapshot v2 + DLC compat | 🔜 Pianificato |
+| M5 — UI PyQt6 + PauseController + hotkey | 🔜 Pianificato |
+| M6 — Military logic reale | 🔜 Pianificato |
+| M7 — Colonial + Economy logic reale | 🔜 Pianificato |
+| M8 — ActionExecutor reale + full-bot UI | 🔜 Pianificato |
+| M9 — QA / stabilità / crash hardening | 🔜 Pianificato |
+| M10 — Packaging + changelog + docs | 🔜 Pianificato |
 
 Run tests:
 
 ```bash
 python -m pytest -q
 ```
-
-
-## EU4 Assistant + Bot decision layer (M2 in progress)
-
-Implemented now:
-- `DecisionEngine` with explainable top-3 recommendations.
-- Configurable risk thresholds from `AppConfig.decision`.
-- Risk profiles (`safe`, `balanced`, `aggressive`) to quickly tune decision thresholds.
-- Structured risk reason codes (`coalition.high`, `debt.over_ratio`, `debt.negative_balance`, `manpower.low`, `rebels.high`).
-- Action plans strutturati (`ActionPlan`) derivati dalle raccomandazioni per preparare il layer bot operativo.
-- Simulated executor pipeline che processa i piani (`skipped` in assist se serve conferma, `simulated_executed` in modalità bot).
-- `SnapshotReader` for normalized JSON game snapshots, now usable directly via CLI adapter (`--snapshot-json`) with fallback on invalid payloads.
-- Save extract adapter (`--snapshot-save`) for lightweight local save ingestion.
-
-Current milestone status:
-- M1 ✅ bootstrap/package/parser/telemetry
-- M2 🟡 in progress (decision + alert engine with configurable thresholds and reason codes)
