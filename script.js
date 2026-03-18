@@ -94,9 +94,7 @@ const translations = {
     cv: {
       title: 'Curriculum Vitae',
       description: 'Preview and download my CV in English or Italian.',
-      downloadEn: 'Download CV (EN)',
-      downloadIt: 'Download CV (IT)',
-      print: 'Print / Save as PDF'
+
     },
     contact: {
       title: 'Contact',
@@ -139,10 +137,21 @@ const translations = {
     },
     edit: {
       pageTitle: 'Editing Works',
-      pageIntro: 'Company-based archive of social editing assets — posts, reels, shorts and carousels.',
+      pageIntro: 'Archive of video editing and post-production work, organised by client and project type.',
+      filters: {
+        title: 'Filters',
+        freelance: 'Freelance',
+        personal: 'Personal',
+        reset: 'Reset filters'
+      },
+      postprod: {
+        label: 'Post-production scope: ',
+        text: 'Full pipeline handled end-to-end — editing, upload, titles, descriptions, keyword research, custom thumbnails, timestamps, and multilingual translation across 9 languages via a custom AI agent.'
+      },
+      noResults: 'No videos match the selected filters.',
       lb: {
         status: 'In progress',
-        desc: 'Current collaboration for an artisan 3D resin motorcycle sticker brand based in Italy. AI-based content strategy, short-form video editing and post packaging.',
+        desc: 'Ongoing collaboration for an artisan 3D resin motorcycle sticker brand based in Italy. AI-based content strategy, short-form video editing and post packaging.',
         role: 'Role: Social Media Manager & Content Editor (IFTS Project Work)',
         igTitle: 'Instagram',
         ig1: 'Carousel — Brand storytelling: origin, craft process, product detail. (in production)',
@@ -178,9 +187,9 @@ const translations = {
       title: 'Chi sono',
       bio: 'Sono Aronne Zanichelli, diplomato in Informatica e Telecomunicazioni. Sono cresciuto con la tecnologia e mi piace trasformare la passione digitale in lavoro reale e utile. Il mio profilo unisce basi di sviluppo, comunicazione visiva e produzione contenuti social.',
       goalTitle: 'Obiettivo professionale',
-      goalText: "Voglio entrare nel mondo dei videogiochi e delle tecnologie interattive, con una visione che include anche la realtà virtuale. Cerco opportunità junior in web/game development dove unire programmazione, creatività e crescita rapida.",
+      goalText: 'Voglio entrare nel mondo dei videogiochi e delle tecnologie interattive, con una visione che include anche la realtà virtuale. Cerco opportunità junior in web/game development dove unire programmazione, creatività e crescita rapida.',
       valueTitle: 'Cosa porto in un team',
-      valueOne: "Mentalità tecnica + creativa: codice con attenzione a comunicazione e UX.",
+      valueOne: 'Mentalità tecnica + creativa: codice con attenzione a comunicazione e UX.',
       valueTwo: "Autonomia operativa nell'esecuzione e nella consegna.",
       valueThree: 'Approccio al problem solving e forte motivazione in percorsi junior.'
     },
@@ -212,21 +221,21 @@ const translations = {
     },
     portfolio: {
       title: 'Portfolio',
-      intro: 'Progetti selezionati — dal codice alla produzione creativa.',
-      badge: { live: '● Live', progress: '◐ In Corso', soon: '○ In Arrivo' },
-      p1: {
-        title: 'Portfolio Bilingue',
-        desc: 'Sito statico bilingue (EN/IT) costruito da zero. Include toggle tema, form di contatto, download CV e tracciamento GA4.'
-      },
-      p2: {
-        title: 'Labelbike — Progetto Social Media',
-        desc: "Produzione contenuti social end-to-end per un brand italiano di adesivi moto: strategia visiva, moodboard AI-assisted, formati carosello e copywriting caption."
-      },
-      p3: {
-        title: 'Game Dev — Primo Progetto',
-        desc: 'Progetto personale di sviluppo videogiochi, attualmente in fase di pianificazione. Combina i fondamentali del C++ con il design interattivo.'
-      },
-      link: { live: 'Vedi Live ↗', repo: 'GitHub Repo ↗', details: 'Vedi Editing Work ↗', wip: 'Work in Progress…' }
+      p1Title: 'Sito Portfolio',
+      p1Status: 'Live',
+      p1Desc: 'Sito statico bilingue (IT/EN) con download CV, form contatti, analytics GA4, modalità dark/light e questa stessa sezione portfolio.',
+      p1Stack: 'HTML · CSS · JS · GitHub Pages · Formspree · GA4',
+      p2Title: 'Labelbike — Social Media & Content',
+      p2Status: 'In corso',
+      p2Desc: 'Gestione social media AI-based per brand artigianale di adesivi in resina 3D per moto. Strategia, moodboard, editing short-form e post packaging in formato carosello per Instagram e TikTok.',
+      p2Stack: 'Social Strategy · AI Content · Canva · DaVinci Resolve',
+      p3Title: 'Progetto Game Dev',
+      p3Status: 'Coming soon',
+      p3Desc: 'Primo progetto personale di game development — stack e scope in definizione. Segui GitHub per gli aggiornamenti.',
+      p3Stack: '(stack in definizione)',
+      linkLive: '↗ Live',
+      linkRepo: 'GitHub',
+      linkDetail: 'Dettagli →'
     },
     timeline: {
       title: 'Formazione ed esperienza',
@@ -247,11 +256,8 @@ const translations = {
       currentDesc: "Percorso che integra design visivo, strategia media e workflow digitali orientati all'AI."
     },
     cv: {
-      title: 'Curriculum Vitae',
-      description: "Visualizza un'anteprima del mio curriculum e scaricalo nella lingua che preferisci.",
-      downloadEn: 'Scarica CV (EN)',
-      downloadIt: 'Scarica CV (IT)',
-      print: 'Stampa / Salva PDF'
+      title: 'Download CV',
+      description: "Anteprima del CV qui sotto. Usa il bottone Scarica CV in alto per salvarne una copia."
     },
     contact: {
       title: 'Contatti',
@@ -294,7 +300,18 @@ const translations = {
     },
     edit: {
       pageTitle: 'Editing Works',
-      pageIntro: 'Archivio asset social per brand — post, reel, short e caroselli.',
+      pageIntro: 'Archivio di lavori di editing video e post-produzione, organizzato per cliente e tipo di progetto.',
+      filters: {
+        title: 'Filtri',
+        freelance: 'Freelance',
+        personal: 'Lavori personali',
+        reset: 'Resetta filtri'
+      },
+      postprod: {
+        label: 'Scope post-produzione: ',
+        text: 'Pipeline gestita interamente — editing, upload, titoli, descrizioni, keyword research, thumbnail personalizzate, timestamp e traduzione in 9 lingue tramite un agente AI custom.'
+      },
+      noResults: 'Nessun video corrisponde ai filtri selezionati.',
       lb: {
         status: 'In corso',
         desc: 'Collaborazione in corso per un brand artigianale italiano di adesivi in resina 3D per moto. Strategia AI-based, editing video short-form e packaging post.',
@@ -400,8 +417,8 @@ function setupAnalyticsEvents() {
     if (typeof window.gtag === 'function') window.gtag('event', eventName, params);
   };
   document.getElementById('viewFeaturedCta')?.addEventListener('click', () => track('click_cta', { cta: 'view_featured_projects' }));
-  document.getElementById('cvDownloadBtn')?.addEventListener('click', () => {
-    const lang = localStorage.getItem('lang') || 'it';
+  document.getElementById('heroCvDownload')?.addEventListener('click', () => {
+    const lang = localStorage.getItem('lang') || 'en';
     track('download_cv', { language: lang });
   });
   document.getElementById('linkedinLink')?.addEventListener('click', () => track('click_social', { platform: 'linkedin' }));
@@ -423,10 +440,6 @@ function init() {
   setupMenu();
   setupContactForm();
   setupAnalyticsEvents();
-  document.getElementById('heroCvDownload')?.addEventListener('click', () => {
-    const lang = localStorage.getItem('lang') || 'en';
-    if (typeof window.gtag === 'function') window.gtag('event', 'download_cv', { language: lang });
-  });
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 }
