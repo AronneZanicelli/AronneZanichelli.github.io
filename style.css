@@ -179,7 +179,9 @@ body {
 .btn-secondary { border-color: var(--border); color: var(--text); background: transparent; }
 
 .skills-grid,
-.portfolio-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.9rem; }
+.portfolio-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.9rem; margin-bottom: 1.1rem; }
+
+.soft-skills { margin-top: 0; }
 
 .skill-card,
 .portfolio-card {
@@ -382,18 +384,7 @@ a:focus-visible {
   box-shadow: 0 6px 18px rgba(0,0,0,0.08);
 }
 
-.cv-actions {
-  margin-top: 14px;
-}
-
-.cv-lang {
-  margin-right: 8px;
-  padding: 6px 10px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  background: transparent;
-  cursor: pointer;
-}
+/* cv-actions and cv-lang removed — download handled by hero button */
 
 .social-name {
   margin-left: 6px;

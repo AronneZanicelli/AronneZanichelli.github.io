@@ -235,7 +235,16 @@ function applyLanguage(lang) {
   document.querySelectorAll('.lang-btn').forEach((btn) => {
     btn.classList.toggle('active', btn.dataset.lang === safeLang);
   });
-  updateCvSection(safeLang);
+  // Sync hero CV download button with active language
+  const heroCvBtn = document.getElementById('heroCvDownload');
+  if (heroCvBtn) heroCvBtn.href = `assets/cv-${safeLang}.pdf`;
+
+  // Sync CV preview image
+  const cvImg = document.getElementById('cv-img');
+  if (cvImg) {
+    cvImg.src = `assets/cv-${safeLang}.png`;
+    cvImg.alt = safeLang === 'it' ? 'Anteprima CV' : 'CV Preview';
+  }
 }
 
 function setupTheme() {
@@ -317,17 +326,6 @@ function setupAnalyticsEvents() {
   });
 }
 
-function updateCvSection(lang) {
-  const img = document.getElementById('cv-img');
-  const dlBtn = document.getElementById('cvDownloadBtn');
-  if (!img || !dlBtn) return;
-  img.src = `assets/cv-${lang}.png`;
-  img.alt = lang === 'it' ? 'Anteprima CV' : 'CV Preview';
-  dlBtn.href = `assets/cv-${lang}.pdf`;
-  const label = translations[lang]?.cv?.[lang === 'it' ? 'downloadIt' : 'downloadEn'];
-  if (label) dlBtn.textContent = label;
-}
-
 function init() {
   const preferredLang = localStorage.getItem('lang') || 'en';
   applyLanguage(preferredLang);
@@ -335,12 +333,12 @@ function init() {
   setupMenu();
   setupContactForm();
   setupAnalyticsEvents();
-  document.getElementById('printCv')?.addEventListener('click', () => window.print());
+  document.getElementById('heroCvDownload')?.addEventListener('click', () => {
+    const lang = localStorage.getItem('lang') || 'en';
+    if (typeof window.gtag === 'function') window.gtag('event', 'download_cv', { language: lang });
+  });
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
-  document.querySelectorAll('.cv-lang').forEach((btn) => {
-    btn.addEventListener('click', () => updateCvSection(btn.dataset.lang));
-  });
 }
 
 document.addEventListener('DOMContentLoaded', init);
