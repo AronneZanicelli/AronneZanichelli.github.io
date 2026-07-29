@@ -33,13 +33,13 @@
         max-width: 210mm; margin: 0 auto; padding: 9mm 10mm;
       }
       a { color: inherit; text-decoration: none; }
-      header { border-bottom: 2px solid var(--accent); padding-bottom: 6pt; margin-bottom: 5mm; }
+      header { border-bottom: 2px solid var(--accent); padding-bottom: 5pt; margin-bottom: 3mm; }
       h1 { font: 700 19pt/1.05 var(--sans); text-transform: uppercase; letter-spacing: 0.02em; }
-      .role { font: 500 9.5pt/1.4 var(--mono); color: var(--accent); margin-top: 2pt; }
+      .role { font: 500 9.5pt/1.4 var(--mono); color: var(--accent); margin-top: 3pt; }
       h2 {
         font: 500 7.5pt/1 var(--mono); text-transform: uppercase; letter-spacing: 0.14em;
         color: var(--accent); border-top: 1px solid var(--hairline);
-        padding-top: 4pt; margin: 10pt 0 4pt;
+        padding-top: 4pt; margin: 10pt 0 5pt;
       }
       h3 {
         font: 700 9.5pt/1.25 var(--sans);
@@ -49,28 +49,20 @@
       h3 .dates { font: 400 7.5pt/1.5 var(--mono); color: var(--ink-2); white-space: nowrap; }
       ul { padding-left: 12pt; margin: 2pt 0 4pt; }
       ul.plain { list-style: none; padding: 0; margin: 0; }
+      li { margin-bottom: 1pt; }
 
-      .grid { display: grid; grid-template-columns: 56mm 1fr; gap: 6mm; }
-      aside { background: var(--sidebar); padding: 4mm; font-size: 8.5pt; line-height: 1.35; }
-      aside h2:first-of-type { margin-top: 6pt; }
+      .grid { display: grid; grid-template-columns: 54mm 1fr; gap: 6mm; }
+      aside { background: var(--sidebar); padding: 4mm; font-size: 8.5pt; line-height: 1.4; }
+      aside h2:first-of-type { margin-top: 5pt; }
       aside li { margin-bottom: 2pt; }
       .photo { display: block; width: 100%; height: auto; border: 2px solid var(--accent); }
-      .contact-list { font: 400 7.5pt/1.55 var(--mono); color: var(--ink-2); overflow-wrap: anywhere; }
+      .contact-list { font: 400 7.5pt/1.5 var(--mono); color: var(--ink-2); overflow-wrap: anywhere; }
 
       .main > h2:first-child { margin-top: 0; border-top: 0; padding-top: 0; }
-      .proof {
-        font: 400 8pt/1.5 var(--mono); color: var(--ink-2);
-        border-block: 1px solid var(--hairline); padding: 3pt 0; margin: 5pt 0 2pt;
-        white-space: nowrap; overflow: hidden;
-      }
-      .proof strong { color: var(--ink); font-weight: 700; }
       .stack { font: 400 7.5pt/1.5 var(--mono); color: var(--ink-2); white-space: nowrap; }
+      .proj { margin-bottom: 3pt; }
       .proj p { margin: 0 0 3pt; }
       .meta { font: 400 7.5pt/1.5 var(--mono); color: var(--ink-2); margin-top: 3pt; }
-      .colophon {
-        font: 400 7pt/1.5 var(--mono); color: var(--ink-2);
-        border-top: 1px solid var(--hairline); padding-top: 4pt; margin-top: 8pt;
-      }
 
       .toolbar {
         display: flex; gap: 8px; justify-content: flex-end;
@@ -105,7 +97,7 @@
 
       <div class="grid">
         <aside>
-          <img class="photo" src="assets/profile.webp" alt="Aronne Zanichelli" width="935" height="1247" />
+          <img class="photo" src="assets/profile.webp" alt="Aronne Zanichelli" width="800" height="811" />
 
           <h2 data-cv="h.contact">Contact</h2>
           <ul class="plain contact-list">
@@ -156,48 +148,35 @@
 
         <section class="main">
           <h2 data-cv="h.summary">Summary</h2>
-          <p data-cv="summary">Junior software developer with an AI-augmented workflow — spec, generate, test, audit; the architecture decisions are mine. Six public repositories back every line of this CV, from a binary-format parser to a server-authoritative multiplayer game.</p>
+          <p data-cv="summary">Junior software developer with an AI-augmented workflow — I write the spec, generate, test, and audit; architecture decisions are mine.</p>
 
-          <p class="proof"><strong>6</strong> <span data-cv="proof.repos">public repositories</span> · <strong>~30k</strong> LOC · <strong>2.6k</strong> <span data-cv="proof.tests">test lines</span> · <strong>9</strong> ADR</p>
+          <h2 data-cv="h.projects">Selected projects</h2>
+          <div class="proj">
+            <h3>BleaBox <span class="stack">Luau --!strict · Roblox</span></h3>
+            <p data-cv="pr.p2">Server-authoritative anti-exploit architecture for a multiplayer RPG · 19 ADRs, ~9k lines.</p>
+          </div>
+          <div class="proj">
+            <h3>eu4-assistant <span class="stack">Python · PyQt6 · CV</span></h3>
+            <p data-cv="pr.p1">Recursive-descent parser for a proprietary binary save format · 2.6k test lines (0.62 ratio).</p>
+          </div>
+          <div class="proj">
+            <h3>claude-dashboard <span class="stack">Electron 33 · React 19 · TS 5.7</span></h3>
+            <p data-cv="pr.p3">Desktop cockpit for Claude Code — streams 15MB JSONL logs with list virtualization.</p>
+          </div>
+          <p class="meta" data-cv="pt.more">+ more projects → aronnezanichelli.github.io/projects.html</p>
 
           <h2 data-cv="h.experience">Experience</h2>
           <h3>Labelbike — Creative &amp; AI Content <span class="dates" data-cv="lb.dates">Oct 2025 – Jun 2026</span></h3>
           <ul>
-            <li data-cv="lb.b1">Ran the creative/social content pipeline with real delegation, not shadowing.</li>
-            <li data-cv="lb.b2">Produced and published 6 YouTube videos end-to-end (script, edit, AI-assisted production).</li>
-            <li data-cv="lb.b3">Localized content into 9 languages via an AI-agent pipeline.</li>
-            <li data-cv="lb.b4">Supported internal development work in Java, C++, SQL.</li>
+            <li data-cv="lb.b1">Ran the creative/social pipeline end-to-end — script to publish — producing 6 YouTube videos and localizing content into 9 languages via an AI-agent pipeline.</li>
+            <li data-cv="lb.b2">Supported internal development work in Java, C++, SQL.</li>
           </ul>
           <h3>Optima — Business Sales Consultant <span class="dates" data-cv="op.dates">May 2024 – Jul 2025</span></h3>
-          <ul>
-            <li data-cv="op.b1">Sold telecom/utility services to business and private clients (freelance).</li>
-            <li data-cv="op.b2">Managed a client portfolio autonomously — prospecting, negotiation, retention.</li>
-          </ul>
+          <p class="meta" data-cv="op.note">Non-technical role — B2B telecom/utility sales, freelance.</p>
 
           <h2 data-cv="h.education">Education</h2>
           <h3 data-cv="ed.t1">Technical diploma, Computer Science — Ist. S. D'Arzo <span class="dates" data-cv="ed.d1">Jul 2025</span></h3>
           <h3 data-cv="ed.t2">IFTS Creative &amp; AI — 50% classroom, 50% at Labelbike <span class="dates" data-cv="ed.d2">Oct 2025 – Jun 2026</span></h3>
-
-          <h2 data-cv="h.projects">Selected projects</h2>
-          <div class="proj">
-            <h3>eu4-assistant <span class="stack">Python · PyQt6 · CV</span></h3>
-            <p data-cv="pr.p1">Custom recursive-descent parser for a proprietary binary format · 2.6k test lines (0.62 ratio).</p>
-          </div>
-          <div class="proj">
-            <h3>BleaBox <span class="stack">Luau --!strict · Roblox</span></h3>
-            <p data-cv="pr.p2">Server-authoritative anti-exploit architecture · 9 ADRs, ~8.7k lines.</p>
-          </div>
-          <div class="proj">
-            <h3>claude-dashboard <span class="stack">Electron 33 · React 19 · TS 5.7</span></h3>
-            <p data-cv="pr.p3">Desktop cockpit for Claude Code — streams 15MB JSONL logs with virtualization.</p>
-          </div>
-          <div class="proj">
-            <h3>VOXELGEN <span class="stack">Godot 4 · C#</span></h3>
-            <p data-cv="pr.p4">Realtime deformable voxel engine · −65% chunk regen time (measured).</p>
-          </div>
-          <p class="meta" data-cv="pt.more">+2 more repositories → aronnezanichelli.github.io/projects.html</p>
-
-          <p class="colophon" data-cv="colophon">Single HTML/CSS source, self-written in English and Italian — no divergence between web and print. Source: github.com/AronneZanichelli/AronneZanichelli.github.io</p>
         </section>
       </div>
     </main>
@@ -228,29 +207,23 @@
           'avail.2': 'Italia ed estero',
           'avail.3': 'In sede / ibrido / remoto',
           'h.summary': 'Profilo',
-          'summary': 'Sviluppatore software junior con metodo AI-augmented — specifico, genero, testo, verifico; le decisioni architetturali sono mie. Sei repository pubblici sostengono ogni riga di questo CV, da un parser per un formato binario a un gioco multiplayer server-authoritative.',
-          'proof.repos': 'repository pubblici', 'proof.tests': 'righe di test',
+          'summary': 'Sviluppatore software junior con metodo AI-augmented — specifico, genero, testo, verifico; le decisioni architetturali sono mie.',
+          'h.projects': 'Progetti selezionati',
+          'pr.p2': 'Architettura server-authoritative anti-exploit per un RPG multiplayer · 19 ADR, ~9k righe.',
+          'pr.p1': 'Parser ricorsivo-discendente per un formato binario proprietario di salvataggio · 2.6k righe di test (ratio 0.62).',
+          'pr.p3': 'Cockpit desktop per Claude Code — streaming di log JSONL da 15MB con virtualizzazione lista.',
+          'pt.more': '+ altri progetti → aronnezanichelli.github.io/projects.html',
           'h.experience': 'Esperienza',
           'lb.dates': 'Ott 2025 – Giu 2026',
-          'lb.b1': 'Gestita la pipeline creative/social con deleghe reali, non da semplice tirocinante.',
-          'lb.b2': 'Prodotti e pubblicati 6 video YouTube end-to-end (script, editing, produzione AI-assisted).',
-          'lb.b3': 'Localizzati contenuti in 9 lingue tramite pipeline di agenti AI.',
-          'lb.b4': 'Supporto allo sviluppo interno in Java, C++, SQL.',
+          'lb.b1': 'Gestita la pipeline creative/social end-to-end — dallo script alla pubblicazione — con 6 video YouTube prodotti e contenuti localizzati in 9 lingue tramite pipeline di agenti AI.',
+          'lb.b2': 'Supporto allo sviluppo interno in Java, C++, SQL.',
           'op.dates': 'Mag 2024 – Lug 2025',
-          'op.b1': 'Vendita di servizi telecom/utility a clienti business e privati (libero professionista).',
-          'op.b2': 'Gestione autonoma del portafoglio clienti — ricerca, negoziazione, fidelizzazione.',
+          'op.note': 'Ruolo non tecnico — vendita B2B telecom/utility, libero professionista.',
           'h.education': 'Formazione',
           'ed.t1': 'Diploma di Perito Informatico — Ist. Sup. S. D\'Arzo',
           'ed.d1': 'Lug 2025',
           'ed.t2': 'IFTS Creative & AI — 50% aula, 50% on-the-job in Labelbike',
-          'ed.d2': 'Ott 2025 – Giu 2026',
-          'h.projects': 'Progetti selezionati',
-          'pr.p1': 'Parser ricorsivo custom per un formato binario proprietario · 2.6k righe di test (ratio 0.62).',
-          'pr.p2': 'Architettura server-authoritative anti-exploit · 9 ADR, ~8.7k righe.',
-          'pr.p3': 'Cockpit desktop per Claude Code — streaming di log JSONL da 15MB con virtualizzazione.',
-          'pr.p4': 'Motore voxel deformabile realtime · −65% tempi di rigenerazione (misurato).',
-          'pt.more': '+2 altri repository → aronnezanichelli.github.io/projects.html',
-          'colophon': 'Unica sorgente HTML/CSS, scritto in prima persona in inglese e italiano — nessuna divergenza tra web e stampa. Sorgente: github.com/AronneZanichelli/AronneZanichelli.github.io'
+          'ed.d2': 'Ott 2025 – Giu 2026'
         };
         var EN = {};
         document.querySelectorAll('[data-cv]').forEach(function (el) { EN[el.dataset.cv] = el.textContent; });
