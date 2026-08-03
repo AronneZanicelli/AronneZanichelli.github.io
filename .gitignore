@@ -20,6 +20,8 @@ package-lock.json
 *.secret
 secrets/
 config.local.js
+cv-private.js
+Aronne_Zanichelli_CV.pdf
 
 # Claude Code (non va in remoto)
 .claude/
